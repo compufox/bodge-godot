@@ -1,5 +1,13 @@
-(claw:c-include "bodge_godot.h" bodge-godot
+(uiop:define-package :%godot (:use))
+
+(claw:defwrapper
+    (bodge-godot
+     (:base-path (asdf:system-source-directory :bodge-godot))
+     (:headers "bodge_godot.h")
+     (:includes "include/")
+     (:include-definitions "(godot|GODOT)_\\w*")
+     (:spec-path "spec/"))
   :in-package :%godot
-  :includes (:godot-includes)
-  :include-definitions ("godot_\\w*" "GODOT_\\w*")
-  :rename-symbols (claw:by-removing-prefixes "godot_" "GODOT_"))
+  :trim-enum-prefix t
+  :recognize-strings t
+  :symbolicate-names (:by-removing-prefixes "godot_" "GODOT_"))
