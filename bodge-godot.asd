@@ -4,7 +4,7 @@
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (uiop claw)
+  :depends-on (uiop claw cffi-libffi)
   :serial t
   :components ((:file "claw")
                (:static-file "bodge_godot.h")
